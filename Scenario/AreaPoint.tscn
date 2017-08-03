@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://punto.gd" type="Script" id=1]
+[ext_resource path="res://Scenario/AreaPoint.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 0.731732, 1.79372, 0.315177 )
+extents = Vector3( 1.73251, 3.85897, 0.315177 )
 
-[node name="punto" type="Area"]
+[node name="AreaPoint" type="Area"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187464, 5.90818, -0.324568 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 )
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0

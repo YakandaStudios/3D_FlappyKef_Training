@@ -8,7 +8,7 @@ signal puntoNuevo(puntaje)
 var puntaje = null
 
 func _ready():
-	puntaje = get_node("../HUD")
+	puntaje = get_node("../../../HUD")
 
 	# Called every time the node is added to the scene.
 	# Initialization here

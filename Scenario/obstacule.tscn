@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://obstacule.gd" type="Script" id=1]
+[ext_resource path="res://Scenario/Obstacule.gd" type="Script" id=1]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -13,7 +13,7 @@ subdivide_depth = 0
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="obstacule_1" type="Area"]
+[node name="Obstacule" type="Area"]
 
 transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0 )
 input_ray_pickable = true
@@ -41,7 +41,6 @@ _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472635, 0.935071, 0.169363 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -55,10 +54,10 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.898208, 0.761083, -0.391384 )
 shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
