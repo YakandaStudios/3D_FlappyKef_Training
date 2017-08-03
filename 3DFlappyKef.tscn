@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Flappy/Flappy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenario/AreaPoint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenario/Obstacule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Camera/Camera.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -85,24 +86,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.3672, -37.6054 )
 
 [node name="Scenario" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="Obstacules" type="Spatial" parent="Scenario"]
 
 [node name="AreaPoint" parent="Scenario/Obstacules" groups=[
 "areaPoint",
 ] instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 14.0356, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 14.0356, 0.0377016 )
 
 [node name="Obstacule" parent="Scenario/Obstacules" groups=[
 "obstacule",
 ] instance=ExtResource( 3 )]
 
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 9.39889, -7.51708 )
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 7.21047, 0 )
 
 [node name="Floor" type="StaticBody" parent="Scenario"]
 
 editor/display_folded = true
-transform = Transform( -1.03244e-05, 0, 77.4255, -1.03244e-05, 5.16172, -1.47936e-13, -236.195, -2.25625e-07, -3.38439e-06, 0.0132446, -4.60844, 1.55378 )
+transform = Transform( -1.09278e-05, 0, 80, -1.44411e-18, 5, -2.01997e-26, -250, -2.88823e-20, -3.49691e-06, 0, 0, 0 )
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1
@@ -115,7 +118,7 @@ _sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Scenario/Floor"]
 
-transform = Transform( 0.293539, 2.04675e-12, 1.16417e-10, -5.58828e-09, 0.293539, 1.04308e-07, -7.45057e-09, -2.32831e-10, 0.293539, 0.0228302, 0.322425, 0.0302448 )
+transform = Transform( 0.293539, 2.04675e-12, 1.16417e-10, -5.58828e-09, 0.293539, 1.04308e-07, -7.45057e-09, -2.32831e-10, 0.293539, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -133,26 +136,14 @@ _sections_unfolded = [ "Geometry", "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Scenario/Floor"]
 
-transform = Transform( 1, 7.67231e-12, 1.20792e-13, -8.18545e-12, 1, -4.74338e-20, -1.13687e-13, 5.29396e-23, 1, -0.000326707, 0.116952, 0.0734777 )
+transform = Transform( 1, 7.67231e-12, 1.19904e-13, -8.18545e-12, 1, -4.74338e-20, -9.9476e-14, 5.3043e-23, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera" parent="." instance=ExtResource( 4 )]
 
-transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -35.4304, 17.339, -18.5481 )
-projection = 0
-fov = 65.0
-near = 0.1
-far = 300.0
-keep_aspect = 1
-current = false
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-doppler/tracking = 0
-_sections_unfolded = [ "Transform" ]
+character_path = NodePath("../Flappy")
 
 [node name="HUD" type="Label" parent="."]
 
