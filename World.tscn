@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://flappy.gd" type="Script" id=1]
 [ext_resource path="res://obstacule.tscn" type="PackedScene" id=2]
-[ext_resource path="res://puntos.gd" type="Script" id=3]
-[ext_resource path="res://punto.tscn" type="PackedScene" id=4]
+[ext_resource path="res://punto.tscn" type="PackedScene" id=3]
+[ext_resource path="res://puntos.gd" type="Script" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -115,11 +115,24 @@ _sections_unfolded = [ "Albedo" ]
 
 radius = 1.0
 
-[node name="World" type="Spatial"]
+[sub_resource type="DynamicFontData" id=7]
+
+font_path = "res://Roboto-Black.ttf"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 60
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 7 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[node name="3DFlappyKef" type="Spatial"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0295639, 0.119125, 0.0536575 )
 
-[node name="floor" type="StaticBody" parent="."]
+[node name="Floor" type="StaticBody" parent="."]
 
 editor/display_folded = true
 transform = Transform( -1.03244e-05, 0, 77.4255, -1.03244e-05, 5.16172, -1.47936e-13, -236.195, -2.25625e-07, -3.38439e-06, -0.0163193, -4.72756, 1.50012 )
@@ -133,7 +146,7 @@ constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
 
-[node name="MeshInstance" type="MeshInstance" parent="floor"]
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
 
 transform = Transform( 0.293539, 2.04675e-12, 1.16417e-10, -5.58828e-09, 0.293539, 1.04308e-07, -7.45057e-09, -2.32831e-10, 0.293539, 0.0228302, 0.322425, 0.0302448 )
 layers = 1
@@ -151,17 +164,18 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="floor"]
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
 
 transform = Transform( 1, 7.67231e-12, 1.20792e-13, -8.18545e-12, 1, -4.74338e-20, -1.13687e-13, 5.29396e-23, 1, -0.000326707, 0.116952, 0.0734777 )
 shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="flappy" type="KinematicBody" parent="." groups=[
+[node name="Flappy" type="KinematicBody" parent="." groups=[
 "player",
 ]]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.288, -17.721 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -175,7 +189,7 @@ jump_speed = 20
 g = -9.8
 dir = Vector3( 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="flappy"]
+[node name="MeshInstance" type="MeshInstance" parent="Flappy"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.389734, 9.32431, -21.4523 )
 layers = 1
@@ -193,15 +207,74 @@ skeleton = NodePath("..")
 material/0 = SubResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="flappy"]
+[node name="CollisionShape" type="CollisionShape" parent="Flappy"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227345, 9.43899, -21.3772 )
 shape = SubResource( 6 )
 disabled = false
 
-[node name="OmniLight" type="OmniLight" parent="."]
+[node name="Scenario" type="Node" parent="."]
 
-transform = Transform( 0.999588, -0.0132601, 0.0254369, 0.0119822, 0.99869, 0.0497473, -0.0260632, -0.0494221, 0.998438, -1.32381, 25.0732, 1.87327 )
+[node name="Obstacules" type="Spatial" parent="Scenario"]
+
+[node name="ObstaculeUp" parent="Scenario/Obstacules" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, -20.5431 )
+
+[node name="ObstaculeDown" parent="Scenario/Obstacules" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 27.5833, -20.1267 )
+
+[node name="AreaPoint" parent="Scenario/Obstacules" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1579, 14.5672, -17.5757 )
+
+[node name="Camera" type="Camera" parent="."]
+
+transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -35.4304, 17.339, -18.5481 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 300.0
+keep_aspect = 1
+current = false
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler/tracking = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="HUD" type="Label" parent="."]
+
+margin_left = 233.0
+margin_top = 11.0
+margin_right = 700.0
+margin_bottom = 90.0
+rect_rotation = -0.256321
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Lights" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="OmniLight" type="OmniLight" parent="Lights"]
+
+transform = Transform( 0.999588, -0.0132601, 0.0254369, 0.0119822, 0.99869, 0.0497473, -0.0260632, -0.0494221, 0.998438, -1.29425, 25.1923, 1.92693 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 2.0
@@ -220,82 +293,4 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light" ]
 
-[node name="Scenario" type="Node" parent="."]
 
-editor/display_folded = true
-
-[node name="obstacule_1" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, -20.5431 )
-
-[node name="obstacule_2" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 21.7905 )
-
-[node name="obstacule_3" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 11.5375 )
-
-[node name="obstacule_4" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 15.5751, 0 )
-
-[node name="obstacule_5" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 27.5833, -20.1267 )
-
-[node name="obstacule_6" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 14.6514, 11.3264 )
-
-[node name="obstacule_7" parent="Scenario" instance=ExtResource( 2 )]
-
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 12.832, 21.6513 )
-
-[node name="obstacule_8" parent="Scenario" instance=ExtResource( 2 )]
-
-[node name="obstacule_9" parent="Scenario" instance=ExtResource( 2 )]
-
-[node name="Camera" type="Camera" parent="."]
-
-transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -49.4631, 14.4865, -5.00514 )
-projection = 0
-fov = 65.0
-near = 0.1
-far = 300.0
-keep_aspect = 1
-current = false
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-doppler/tracking = 0
-_sections_unfolded = [ "Transform" ]
-
-[node name="puntaje" type="Label" parent="."]
-
-margin_left = 233.0
-margin_top = 11.0
-margin_right = 700.0
-margin_bottom = 90.0
-rect_rotation = -0.256321
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "0"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
-
-[node name="punto" parent="." instance=ExtResource( 4 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187464, 14.4481, -17.6294 )
-
-
-[editable path="punto"]
