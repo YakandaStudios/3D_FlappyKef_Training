@@ -60,17 +60,17 @@ subdivide_depth = 0
 extents = Vector3( 0.3, 0.3, 0.3 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFontData" id=7]
+[sub_resource type="DynamicFontData" id=4]
 
 font_path = "res://Media/Roboto-Black.ttf"
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=5]
 
 size = 60
 use_mipmaps = false
 use_filter = false
-font_data = SubResource( 7 )
+font_data = SubResource( 4 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [node name="3DFlappyKef" type="Spatial"]
@@ -83,10 +83,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0295639, 0.119125, 0.0536575
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.3672, -37.6054 )
+hor_speed = 0.05
+gravity = -1.5
 
 [node name="Scenario" type="Node" parent="."]
-
-editor/display_folded = true
 
 [node name="Obstacules" type="Spatial" parent="Scenario"]
 
@@ -157,7 +157,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "0"
 align = 1
