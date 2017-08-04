@@ -2,8 +2,8 @@ extends Area
 
 func _ready():
 	pass
-
-
-func _on_obstacule_1_body_entered( body ):
+	
+func _on_Obstacule_body_entered( body ):
+	print(body)
 	if( body.is_in_group("player")):
-		body.die()
+		body.die() # replace with function body

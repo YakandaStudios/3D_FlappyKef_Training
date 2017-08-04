@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenario/AreaPoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenario/Obstacule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenario/Floor.tscn" type="PackedScene" id=3]
+
+[node name="Scenario" type="Node"]
+
+[node name="Obstacules" type="Spatial" parent="."]
+
+[node name="AreaPoint" parent="Obstacules" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 14.0356, 0.0377016 )
+
+[node name="Obstacule" parent="Obstacules" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 3.24798, 0 )
+
+[node name="Floor" parent="." instance=ExtResource( 3 )]
+
+[node name="flag_repeater" type="Spatial" parent="."]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 73.1693 )
+_sections_unfolded = [ "Transform" ]
+
+

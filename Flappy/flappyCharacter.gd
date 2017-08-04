@@ -1,7 +1,8 @@
 extends KinematicBody
 
-export(float)  var hor_speed = 0.1
-export(float) var gravity = -9.8
+var hor_speed = 0.2
+var gravity = -2
+var jump_speed = 0.5
 var dir = Vector3()
 
 func die():
@@ -17,6 +18,6 @@ func _process(delta):
 	dir.z = hor_speed
 
 	if Input.is_action_just_pressed("ui_jump"):
-		dir.y = 0.5
+		dir.y = jump_speed
 	
 	move(dir)

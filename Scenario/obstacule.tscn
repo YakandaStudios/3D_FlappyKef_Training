@@ -62,6 +62,6 @@ shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="body_entered" from="." to="." method="_on_obstacule_1_body_entered" flags=6]
+[connection signal="body_entered" from="." to="." method="_on_Obstacule_body_entered" flags=3]
 
 
