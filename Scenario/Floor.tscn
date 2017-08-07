@@ -59,7 +59,7 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Floor" type="StaticBody"]
 
-transform = Transform( -1.09278e-05, 0, 80, -1.44411e-18, 5, -2.01997e-26, -250, -2.88823e-20, -3.49691e-06, 0, 0, 0 )
+transform = Transform( -1.09278e-05, 0, 120, 2.1892e-31, 5, 4.59318e-39, -250, 4.37839e-33, -5.24537e-06, 0, 0, 0 )
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1

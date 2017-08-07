@@ -28,18 +28,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127527, 9.52016, -50 )
 
 [node name="Scenario" parent="." instance=ExtResource( 2 )]
 
-[node name="Obstacule" parent="Scenario/Obstacules"]
-
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 2.62195, 4.42574 )
-_sections_unfolded = [ "Audio Bus", "Collision", "Pause", "Reverb Bus", "Transform", "Visibility" ]
 
-[node name="Timer" type="Timer" parent="Scenario"]
+[node name="Floor" parent="Scenario"]
 
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
+transform = Transform( -1.09278e-05, 0, 80, 2.1892e-31, 5, 3.06212e-39, -250, 4.37839e-33, -3.49691e-06, 0, 0, 0 )
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 
@@ -95,4 +88,3 @@ _sections_unfolded = [ "Light" ]
 
 [editable path="Flappy"]
 [editable path="Scenario"]
-[editable path="Scenario/Obstacules/Obstacule"]
