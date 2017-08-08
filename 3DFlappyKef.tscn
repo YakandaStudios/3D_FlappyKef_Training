@@ -23,8 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0295639, 0.119125, 0.0536575
 
 [node name="Flappy" parent="." instance=ExtResource( 1 )]
 
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127527, 9.52016, -50 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127527, 9.52016, 1 )
 
 [node name="Scenario" parent="." instance=ExtResource( 2 )]
 
@@ -32,7 +31,7 @@ editor/display_folded = true
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 
-transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -29.4117, 18.802, -50.3453 )
+transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -29.4117, 18.802, 1 )
 character_path = NodePath("../Flappy")
 
 [node name="HUD" type="Label" parent="."]
@@ -84,4 +83,3 @@ directional_shadow_normal_bias = 0.2
 _sections_unfolded = [ "Transform" ]
 
 
-[editable path="Flappy"]
