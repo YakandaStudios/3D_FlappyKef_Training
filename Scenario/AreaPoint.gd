@@ -1,13 +1,10 @@
 extends Area
 
-var score = 0
-var HUD = null
+# class member variables go here, for example:
+# var a = 2
+# var b = "textvar"
 
 func _ready():
-	HUD = get_node("../../../HUD")
-
-func _on_AreaPoint_body_entered( body ):
-	if( body.is_in_group("player") ):
-		score = score + 1
-		print(score)
-
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass

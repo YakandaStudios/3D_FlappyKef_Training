@@ -1,8 +1,28 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenario/AreaPoint.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=3]
 
-[sub_resource type="BoxShape" id=1]
+script/source = "
+extends Area
+
+var score = 0
+var HUD = null
+
+func _ready():
+	HUD = get_node(\"../../../HUD\")
+
+
+func _on_AreaPoint_body_entered( body ):
+		if( body.is_in_group(\"player\") ):
+			score = score + 1
+			print(score)
+			HUD.set_text(str(score))
+
+
+
+"
+
+[sub_resource type="BoxShape" id=2]
 
 extents = Vector3( 1.73251, 3.85897, 0.315177 )
 
@@ -29,12 +49,12 @@ reverb_bus_enable = false
 reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
-script = ExtResource( 1 )
+script = SubResource( 3 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 disabled = false
 
 [connection signal="body_entered" from="." to="." method="_on_AreaPoint_body_entered" flags=3]

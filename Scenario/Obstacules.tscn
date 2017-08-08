@@ -10,7 +10,6 @@ _sections_unfolded = [ "Transform" ]
 [node name="AreaPoint" parent="." instance=ExtResource( 1 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.566, 0 )
-script = null
 
 [node name="ObstaculeDown" parent="." instance=ExtResource( 2 )]
 
