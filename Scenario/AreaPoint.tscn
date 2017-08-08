@@ -37,6 +37,6 @@ _sections_unfolded = [ "Collision", "Transform" ]
 shape = SubResource( 1 )
 disabled = false
 
-[connection signal="body_entered" from="." to="." method="_on_punto_body_entered" flags=6]
+[connection signal="body_entered" from="." to="." method="_on_AreaPoint_body_entered" flags=3]
 
 

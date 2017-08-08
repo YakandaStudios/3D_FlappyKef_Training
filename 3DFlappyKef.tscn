@@ -23,6 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0295639, 0.119125, 0.0536575
 
 [node name="Flappy" parent="." instance=ExtResource( 1 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127527, 9.52016, -50 )
 
 [node name="Scenario" parent="." instance=ExtResource( 2 )]
@@ -31,7 +32,7 @@ editor/display_folded = true
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 
-transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -52.2025, 25.0884, -50 )
+transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -29.4117, 18.802, -50.3453 )
 character_path = NodePath("../Flappy")
 
 [node name="HUD" type="Label" parent="."]
@@ -59,26 +60,28 @@ _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "M
 
 editor/display_folded = true
 
-[node name="OmniLight" type="OmniLight" parent="Lights"]
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
 
-transform = Transform( 0.999588, -0.0132601, 0.0254369, 0.0119822, 0.99869, 0.0497473, -0.0260632, -0.0494221, 0.998438, -1.29425, 25.1923, 1.92693 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, -60, 40, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 2.0
+light_energy = 1.0
 light_negative = false
 light_specular = 0.5
 light_cull_mask = -1
 shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
+shadow_bias = 1.0
 shadow_contact = 0.0
-shadow_max_distance = 0.0
+shadow_max_distance = 200.0
 editor_only = false
-omni_range = 115.898
-omni_attenuation = 1.0
-omni_shadow_mode = 1
-omni_shadow_detail = 1
-_sections_unfolded = [ "Light" ]
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.2
+_sections_unfolded = [ "Transform" ]
 
 
 [editable path="Flappy"]

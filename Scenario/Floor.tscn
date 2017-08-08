@@ -57,6 +57,7 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Floor" type="StaticBody"]
 
+editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1

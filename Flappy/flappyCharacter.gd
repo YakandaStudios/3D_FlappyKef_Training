@@ -6,13 +6,13 @@ var jump_speed = 0.5
 var dir = Vector3()
 
 func die():
-	get_tree().set_pause(true)
+	pass
+#	get_tree().set_pause(true)
 	#queue_free()
 
 func _ready():
 	set_process(true)
-	pass
-		
+	
 func _process(delta):	
 	dir.y += delta*gravity
 	dir.z = hor_speed
