@@ -27,15 +27,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
 
-transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -29.4117, 18.802, 1 )
+transform = Transform( 3.09714e-08, 0.032429, -0.708542, -1.41752e-09, 0.708542, 0.032429, 0.709284, 0, 3.10038e-08, -23.8043, 14.3052, 1 )
 character_path = NodePath("../Flappy")
+
+[node name="Scenario" parent="." instance=ExtResource( 3 )]
 
 [node name="HUD" type="Label" parent="."]
 
 margin_left = 309.0
-margin_top = 16.0
+margin_top = 17.0
 margin_right = 776.0
-margin_bottom = 95.0
+margin_bottom = 96.0
 rect_rotation = -0.256321
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -51,13 +53,9 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="Lights" type="Node" parent="."]
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
 
-editor/display_folded = true
-
-[node name="DirectionalLight" type="DirectionalLight" parent="Lights"]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, -60, 40, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, -60.0296, 39.8809, -0.0536575 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -77,7 +75,5 @@ directional_shadow_split_3 = 0.5
 directional_shadow_blend_splits = false
 directional_shadow_normal_bias = 0.2
 _sections_unfolded = [ "Transform" ]
-
-[node name="Scenario" parent="." instance=ExtResource( 3 )]
 
 

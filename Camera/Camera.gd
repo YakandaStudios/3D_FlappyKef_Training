@@ -12,5 +12,5 @@ func _ready():
 func _process(delta):
 	var target_position = node_character.get_transform().origin
 	var camera_position = get_transform().origin
-	camera_position.z =  target_position.z
+	camera_position.z =  target_position.z + 10
 	set_translation(camera_position)

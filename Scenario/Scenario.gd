@@ -4,7 +4,7 @@ extends Node
 var camera = null
 var position_camera = null
 var limit_repeater_floor = 50
-var limit_repeater_obstacule = 30
+var limit_repeater_obstacule = 20
 var start_pos = 0
 var difference = 0
 

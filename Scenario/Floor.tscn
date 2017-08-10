@@ -52,12 +52,10 @@ subdivide_depth = 0
 
 [sub_resource type="BoxShape" id=3]
 
-extents = Vector3( 0.3, 0.3, 0.3 )
-_sections_unfolded = [ "Resource" ]
+extents = Vector3( 1, 0.0874363, 1 )
 
 [node name="Floor" type="StaticBody"]
 
-editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1
@@ -70,7 +68,7 @@ _sections_unfolded = [ "Audio Bus", "Collision", "Transform", "Visibility" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 
-transform = Transform( 0.293539, 5.58828e-09, 7.45056e-09, -5.58828e-09, 0.293539, 2.32831e-10, -7.45056e-09, -2.32831e-10, 0.293539, 0, 0, 0 )
+transform = Transform( 1, 1.90376e-08, 2.53818e-08, -1.90376e-08, 1, 7.93186e-10, -2.53818e-08, -7.93186e-10, 1, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -88,9 +86,7 @@ _sections_unfolded = [ "Geometry", "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
-transform = Transform( 1, 7.67231e-12, 1.19904e-13, -8.18545e-12, 1, -4.74338e-20, -9.9476e-14, 5.3043e-23, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = false
-_sections_unfolded = [ "Transform" ]
 
 
