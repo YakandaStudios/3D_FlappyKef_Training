@@ -34,7 +34,7 @@ func _ready():
 #The camera moves in relation at the traslation of the camera, this involves the creation of the scenario too.
 func _process(delta):
 	position_camera = camera.get_transform().origin
-	print( abs( ( start_pos - round(position_camera.z)) ) )
+#	print( abs( ( start_pos - round(position_camera.z)) ) )
 	difference =  abs( ( start_pos - round(position_camera.z)) )
 	
 	if ( difference == limit_repeater_obstacule):
