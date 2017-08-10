@@ -5,7 +5,8 @@ var camera = null
 var position_camera = null
 var limit_repeater_floor = 50
 var limit_repeater_obstacule = 20
-var start_pos = 0
+var start_position_obs = 0
+var start_position_floor = 0
 var difference = 0
 
 #New Objects variables
@@ -26,25 +27,27 @@ func _ready():
 	scene_floor_instance.set_scale(scale_floor)
 	add_child(scene_floor_instance)
 
-	for i in range(0, get_child_count()):
+	start_position_obs = camera.get_transform().origin.z
+	start_position_floor = camera.get_transform().origin.z
+	
+#	for i in range(0, get_child_count()):
 #    	get_parent().get_child(i).queue_free()
-    	print( get_parent().get_parent() )
-	start_pos = camera.get_transform().origin.z
+#    	print( get_parent().get_parent() )
 	
 #The camera moves in relation at the traslation of the camera, this involves the creation of the scenario too.
 func _process(delta):
 	position_camera = camera.get_transform().origin
-#	print( abs( ( start_pos - round(position_camera.z)) ) )
-	difference =  abs( ( start_pos - round(position_camera.z)) )
+#	print( abs( ( start_position_obs - round(position_camera.z)) ) )
 	
-	if ( difference == limit_repeater_obstacule):
-		start_pos = round(position_camera.z)
+	if ( difference(start_position_obs, round(position_camera.z)) == limit_repeater_obstacule):
+		start_position_obs = round(position_camera.z)
 		repeater_obstacule()
-	elif (difference == limit_repeater_floor):
+	elif (difference(start_position_floor, round(position_camera.z)) == limit_repeater_floor):
+		start_position_floor = round(position_camera.z)
 		repeater_floor()
 	
 func repeater_obstacule():
-	next_position_obstacule.z += 50
+	next_position_obstacule.z += 20
 	osbtacule_flappy(next_position_obstacule)
 	
 func repeater_floor():
@@ -61,3 +64,7 @@ func floor_flappy(z_distance):
 	scene_floor_instance.translate(z_distance)
 	scene_floor_instance.set_scale(scale_floor)
 	add_child(scene_floor_instance)
+	
+func difference(first_distance, second_distance):
+	var dif = abs( ( first_distance - round(second_distance)) )
+	return dif
