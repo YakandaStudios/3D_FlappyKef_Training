@@ -50,18 +50,16 @@ func _process(delta):
 		start_position_floor = round(position_camera.z)
 		repeater_floor()
 	
-	print(array_obstacules.size())
+ 
 	
-	if ( (array_obstacules.size() > 0) && (array_floors.size() > 0) ):
+	if ( (array_obstacules.size() > 2) && (array_floors.size() > 1) ):
 		target_delete = array_obstacules.front()
-		target_delete.free()
+		target_delete.queue_free()
 		array_obstacules.pop_front()
-		print("Erase front obstacule" + str(target_delete))
 		
 		target_delete = array_floors.front()
-		target_delete.free()
-		array_obstacules.pop_front()
-		print("Erase front floor" + str(target_delete))
+		target_delete.queue_free() 
+		array_floors.pop_front()
 	
 func repeater_obstacule():
 	next_position_obstacule.z += 20
