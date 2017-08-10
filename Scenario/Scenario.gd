@@ -33,10 +33,7 @@ func _ready():
 
 	start_position_obs = camera.get_transform().origin.z
 	start_position_floor = camera.get_transform().origin.z
-	
-#	for i in range(0, get_child_count()):
-#    	get_parent().get_child(i).queue_free()
-#    	print( get_parent().get_parent() )
+
 	
 #The camera moves in relation at the traslation of the camera, this involves the creation of the scenario too.
 func _process(delta):
@@ -50,15 +47,14 @@ func _process(delta):
 		start_position_floor = round(position_camera.z)
 		repeater_floor()
 	
- 
 	
 	if ( (array_obstacules.size() > 2) && (array_floors.size() > 1) ):
 		target_delete = array_obstacules.front()
-		target_delete.queue_free()
-		array_obstacules.pop_front()
+		target_delete.free()
+		array_obstacules.pop_front()               
 		
 		target_delete = array_floors.front()
-		target_delete.queue_free() 
+		target_delete.free() 
 		array_floors.pop_front()
 	
 func repeater_obstacule():
