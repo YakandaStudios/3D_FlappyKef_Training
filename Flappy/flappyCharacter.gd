@@ -6,9 +6,9 @@ var jump_speed = 0.5
 var dir = Vector3()
 
 func die():
-	pass
+#	queue_free()
 #	get_tree().set_pause(true)
-	#queue_free()
+	pass
 
 func _ready():
 	set_process(true)
