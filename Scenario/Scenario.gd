@@ -5,8 +5,7 @@ var camera = null
 var position_camera = null
 var limit_repeater_floor = 50
 var limit_repeater_obstacule = 30
-var floor_pos = 0
-var obs_pos = 0
+var start_pos = 0
 var difference = 0
 
 #New Objects variables
