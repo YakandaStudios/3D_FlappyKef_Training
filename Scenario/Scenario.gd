@@ -24,7 +24,7 @@ extends Node
 var camera = null
 var position_camera = null
 var limit_repeater_floor = 50
-var limit_repeater_obstacule = 30
+var limit_repeater_obstacule = 50
 var start_position_obs = 0
 var start_position_floor = 0
 var array_floors = []
@@ -32,8 +32,9 @@ var array_obstacules = []
 var target_delete = null
 var scene_obstacule_instance = null
 var scene_floor_instance = null
-var quantity_obstacules = 8
-var quantity_floor = 1
+var limit_obstacules_in_screen = 10
+var limit_floor_in_screen = 1
+var quantity_obstacules = 3
 
 #New Objects variables
 var next_position_obstacule = Vector3(0,0,0)
@@ -45,7 +46,6 @@ var scene_obstacule = preload("res://Scenario/Obstacules.tscn")
 var scene_floor = preload("res://Scenario/Floor.tscn")
 
 func _ready():
-
 	
 	camera = get_node("../Camera")
 	
@@ -77,29 +77,29 @@ func _process(delta):
 
 	if ( difference(start_position_obs, round(position_camera.z)) == limit_repeater_obstacule):
 		start_position_obs = round(position_camera.z)
-		repeater_obstacule()
+		repeater_obstacule(quantity_obstacules)
 	elif (difference(start_position_floor, round(position_camera.z)) == limit_repeater_floor):
 		start_position_floor = round(position_camera.z)
 		repeater_floor()
 	
-	print("Obstacules: " + str(array_obstacules.size() ) )
-	if ( array_obstacules.size() > quantity_obstacules ):
+#	print("Obstacules: " + str(array_obstacules.size() ) )
+	if ( array_obstacules.size() > limit_obstacules_in_screen ):
 #		print("Obstacules: " + str(array_obstacules.size() ) )
 		target_delete = array_obstacules.front()
 		target_delete.free()
 		array_obstacules.pop_front()  
 		 
-	if( array_floors.size() > quantity_floor ):
+	if( array_floors.size() > limit_floor_in_screen):
 		target_delete = array_floors.front()
 		target_delete.free() 
 		array_floors.pop_front()
 		
 #you can define hoy many obstacule you want to repeat
-func repeater_obstacule():
-	osbtacule_flappy(next_position_obstacule)
-#	next_position_obstacule.z += 20
-#	osbtacule_flappy(next_position_obstacule)
-	pass
+func repeater_obstacule(quantity_obstacules):
+	print(next_position_obstacule)
+	for i in range(quantity_obstacules):
+		next_position_obstacule.z += 20
+		osbtacule_flappy(next_position_obstacule)
 	
 func repeater_floor():
 	next_position_floor.z += 50
